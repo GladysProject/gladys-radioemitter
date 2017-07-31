@@ -78,7 +78,10 @@ void setup() {
 }
 
 void loop() {
-  
+ 
+    //Turn ON HE300 
+  mySwitch.send(1234,0,true);
+  delay(2000);
   if (mySwitch.available()) {
     int value = mySwitch.getReceivedValue();
     
