@@ -13,9 +13,9 @@
  */
  
 #include <ArduinoJson.h>
-#include <RCSwitch.h>
+#include <HRCSwitch.h>
 
-RCSwitch mySwitch = RCSwitch();
+HRCSwitch mySwitch = HRCSwitch();
 
 void SendRadioCode(long code) {
    mySwitch.send(code, 24);
