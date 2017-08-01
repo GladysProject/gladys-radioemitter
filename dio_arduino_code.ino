@@ -18,10 +18,10 @@
 HRCSwitch mySwitch = HRCSwitch();
 
 void SendRadioCode(long code) {
-   mySwitch.send(code, 24);
+   mySwitch.send(1234,0,true);
 }
+  mySwitch.send(1234,0,true);
 
-// Serial buffer
 String command = "";
 
 // End of command marker
