@@ -18,9 +18,9 @@
 HRCSwitch mySwitch = HRCSwitch();
 
 void SendRadioCode(long code) {
-   mySwitch.send(1234,0,true);
+   mySwitch.send(code,0,true);
 }
-  mySwitch.send(1234,0,true);
+
 
 String command = "";
 
