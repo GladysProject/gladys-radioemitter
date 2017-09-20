@@ -16,11 +16,19 @@ Radio emitter is used to control radio plugs.
 | ---| ---| ---| ---| 
 | My Switch | YOUR_DECIMAL_CODE_FOR_THIS_SWITCH_OFF | radio | radioemitter 
 
-- Then, inside this device, create a deviceType :
+- Then, inside this device, create a deviceType : 
 
 | type | min | max 
 | ---| ---| ---|
 | binary | 0 | 1
+
+note: if phenix like outlets (decimalCodeOn = decomalCodeOff + 1), keep 1 as max value. If decimal codeON is not related to decialCodeOff, just put decimalCodeON as max.
+
+- You can specify canal & pulseLength of signal sent in deviceTypeIdentifier. Default are 1 & 100 if not specified and work for most devices.
+
+| identifier | type | min | max 
+| ---| ---| ---| ---|
+| CANAL:PULSELENGTH | binary | 0 | 1
 
 ## Credits
 
