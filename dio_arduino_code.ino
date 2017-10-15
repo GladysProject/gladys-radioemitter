@@ -35,7 +35,14 @@ void executeFunction(String json_data) {
   JsonObject& v = jsonBuffer.parseObject(json_data);
   //on décompose la chaine de cartère
   if ( v["function_name"] == String("SendRadioCode") ) {
-    SendRadioCode(v["code"]);
+    -    SendRadioCode(v["code"]);
+    // PulseLength and Canal are sets in Gladys module.
+    // Default to 1 & 100. Will work on most devices. Check deviceType conf to adjust to your needs.
+    int canal = v["canal"];
+    int pulseLength = v["pulseLength"];
+    long code = v["code"];
+    mySwitch.setProtocol(canal, pulseLength);
+    SendRadioCode(code);
   } 
 }
 
