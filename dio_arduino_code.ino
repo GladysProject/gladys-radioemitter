@@ -13,15 +13,15 @@
  */
  
 #include <ArduinoJson.h>
-#include <RCSwitch.h>
+#include <HRCSwitch.h>
 
-RCSwitch mySwitch = RCSwitch();
+HRCSwitch mySwitch = HRCSwitch();
 
 void SendRadioCode(long code) {
-   mySwitch.send(code, 24);
+   mySwitch.send(code,0,true);
 }
 
-// Serial buffer
+
 String command = "";
 
 // End of command marker
@@ -35,6 +35,7 @@ void executeFunction(String json_data) {
   JsonObject& v = jsonBuffer.parseObject(json_data);
   //on décompose la chaine de cartère
   if ( v["function_name"] == String("SendRadioCode") ) {
+    -    SendRadioCode(v["code"]);
     // PulseLength and Canal are sets in Gladys module.
     // Default to 1 & 100. Will work on most devices. Check deviceType conf to adjust to your needs.
     int canal = v["canal"];
@@ -84,8 +85,8 @@ void setup() {
 }
 
 void loop() {
-  
-  if (mySwitch.available()) {
+ 
+if (mySwitch.available()) {
     int value = mySwitch.getReceivedValue();
     
     if (value == 0) {
