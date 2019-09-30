@@ -31,11 +31,10 @@ char endMarker = '%';
  * Execute the right function
  */
 void executeFunction(String json_data) {
-  StaticJsonBuffer<200> jsonBuffer;
-  JsonObject& v = jsonBuffer.parseObject(json_data);
-  //on décompose la chaine de cartère
-  if ( v["function_name"] == String("SendRadioCode") ) {
-    SendRadioCode(v["code"]);
+  StaticJsonDocument<200> jsonDocument;
+  deserializeJson(jsonDocument, json_data);
+  if ( jsonDocument["function_name"] == String("SendRadioCode") ) {
+    SendRadioCode(jsonDocument["code"]);
   } 
 }
 
